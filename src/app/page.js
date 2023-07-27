@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import styles from './page.module.scss'
 import Header from '@/components/Header'
+import Button from '@/components/Button'
 
 // JSX = Javascript XML
 
@@ -31,6 +32,10 @@ export default function Home() {
         <p>
           Listings from different fields - from furnitures to books and electronics. Sign up to see all the listings and find the best match for you.
         </p>
+
+        <Button>
+          Get Started
+        </Button>
       </div>
 
     </main>
