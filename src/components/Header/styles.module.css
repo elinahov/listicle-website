@@ -1,0 +1,50 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logoContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logoContainer h2 {
+    color: #1B243D;
+    font-size: 20px;
+    margin-left: 8px;
+}
+
+.actionsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.action {
+    font-weight: normal;
+    color: #4F5665;
+    font-size: 16;
+    margin: 4px 16px;
+}
+
+.cta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cta h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #3F6189;
+    margin: 0 15px;
+}
+
+.cta span {
+    border: 1px solid #3F6189;
+    border-radius: 50px;
+    padding: 13px 20px;
+}

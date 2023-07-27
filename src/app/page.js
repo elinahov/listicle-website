@@ -1,22 +1,30 @@
-'use client'
 import Image from 'next/image'
 import styles from './page.module.css'
 import Card from '../components/Card'
+import Header from '@/components/Header'
 
 // JSX = Javascript XML
 
 export default function Home() {
-  const handleTitleClick = () => {
-    alert('Hi there!')
-  }
-
+  const headerActions = [
+    {
+      title: 'About'
+    },
+    {
+      title: 'Features'
+    },
+    {
+      title: 'Pricing'
+    },
+    {
+      title: 'Testimonials'
+    },
+  ]
   return (
     <main className={styles.main}>
+      <Header actions={headerActions} />
+
       <div className={styles.description}>
-        <p onClick={handleTitleClick}>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
         <div>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
@@ -55,7 +63,6 @@ export default function Home() {
         <Card title="Templates" />
 
         <Card title="Deploy" />
-
       </div>
     </main>
   )
