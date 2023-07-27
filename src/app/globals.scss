@@ -1,3 +1,5 @@
+@import './variables.module.scss';
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -86,6 +88,18 @@ body {
 }
 
 body {
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: 500;
+  color: $primary-color;
+}
+
+p {
+  font-size: 16px;
+  line-height: 30px;
+  color: $secondary-color;
 }
 
 a {
