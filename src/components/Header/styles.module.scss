@@ -1,3 +1,5 @@
+@import '../../app/variables.module.scss';
+
 .header {
     display: flex;
     flex-direction: row;
@@ -12,7 +14,7 @@
 }
 
 .logoContainer h2 {
-    color: #1B243D;
+    color: $primary-color;
     font-size: 20px;
     margin-left: 8px;
 }
@@ -25,8 +27,8 @@
 
 .action {
     font-weight: normal;
-    color: #4F5665;
-    font-size: 16;
+    color: $secondary-color;
+    font-size: 16px;
     margin: 4px 16px;
 }
 
@@ -39,12 +41,12 @@
 .cta h3 {
     font-size: 16px;
     font-weight: 500;
-    color: #3F6189;
+    color: $accent-color;
     margin: 0 15px;
 }
 
 .cta span {
-    border: 1px solid #3F6189;
+    border: 1px solid $accent-color;
     border-radius: 50px;
     padding: 13px 20px;
 }

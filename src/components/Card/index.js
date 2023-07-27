@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
-import styles from './styles.module.css'
+import styles from './styles.module.scss'
 
 function Card({ title, subtitle = 'Default title', link = 'https://google.com' }) {
     const [clickCount, setClickCount] = useState(0);
