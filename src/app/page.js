@@ -18,6 +18,7 @@ export default function Home() {
       title: 'Testimonials'
     },
   ]
+
   return (
     <main className={styles.main}>
       <Header actions={headerActions} />
@@ -38,7 +39,12 @@ export default function Home() {
         </div>
 
         <div className={styles.bannerImage}>
-          <Image className={styles.image} src='/illustration.png' alt="Banner Illustration" fill />
+          <Image
+            className={styles.image}
+            src='/illustration.png'
+            alt="Banner Illustration"
+            fill
+          />
         </div>
       </div>
 
