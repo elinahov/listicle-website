@@ -2,6 +2,7 @@ import Image from 'next/image'
 import styles from './page.module.scss'
 import Header from '@/components/Header'
 import Button from '@/components/Button'
+import React from 'react'
 
 export default function Home() {
   const headerActions = [
@@ -16,6 +17,24 @@ export default function Home() {
     },
     {
       title: 'Testimonials'
+    },
+  ]
+
+  const highlights = [
+    {
+      title: '500+',
+      subtitle: 'Listings',
+      icon: '/phone.png',
+    },
+    {
+      title: '100+',
+      subtitle: 'Users',
+      icon: '/user.png',
+    },
+    {
+      title: '30+',
+      subtitle: 'Servers',
+      icon: '/server.png',
     },
   ]
 
@@ -46,6 +65,27 @@ export default function Home() {
             fill
           />
         </div>
+      </div>
+
+      <div className={styles.highlights}>
+        {highlights.map((highlight, index) => (
+          <React.Fragment key={highlight.title}>
+            <div className={styles.highlight}>
+              <span className={styles.iconContainer}>
+                <Image src={highlight.icon} width={24} height={24} className={styles.icon} alt={highlight.subtitle} />
+              </span>
+
+              <span>
+                <h5>{highlight.title}</h5>
+                <p>{highlight.subtitle}</p>
+              </span>
+            </div>
+            
+            {index < highlights.length - 1 && (
+              <div className={styles.wall} />
+            )}
+          </React.Fragment>
+        ))}
       </div>
 
     </main>

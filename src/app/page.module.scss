@@ -1,3 +1,5 @@
+@import './variables.module.scss';
+
 .main {
   padding: 2rem;
   min-height: 100vh;
@@ -33,4 +35,52 @@
 .image {
   position: static !important;
   min-width: 200px;
+}
+
+.highlights {
+  background-color: $light-grey;
+  padding: 40px;
+  margin: 40px 0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.highlight {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  h5 {
+    font-size: 25px;
+    color: $primary-color;
+    line-height: 30px;
+    margin-bottom: 4px;
+  }
+
+  p {
+    font-size: 20px;
+    color: $secondary-color;
+    line-height: 30px;
+  }
+}
+
+.iconContainer {
+  background-color: $light-blue;
+  border-radius: 50%;
+  padding: 16px;
+  margin-right: 16px;
+}
+
+.icon {
+  object-fit: contain;
+}
+
+.wall {
+  height: 100px;
+  width: 2px;
+  background-color: $border-color;
 }
