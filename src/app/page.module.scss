@@ -5,6 +5,9 @@
 
 .banner {
   padding: 40px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
   h1 {
     margin: 20px 0;
@@ -13,4 +16,19 @@
   p {
     margin-bottom: 20px;
   }
+}
+
+.bannerText {
+  flex: 1;
+  margin: 20px;
+}
+
+.bannerImage {
+  flex: 1;
+  position: relative;
+  margin: 20px;
+}
+
+.image {
+  position: static !important;
 }
