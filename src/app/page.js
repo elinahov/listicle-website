@@ -63,6 +63,8 @@ export default function Home() {
             src='/illustration.png'
             alt="Banner Illustration"
             fill
+            sizes="100vw"
+            priority
           />
         </div>
       </div>
@@ -86,6 +88,15 @@ export default function Home() {
             )}
           </React.Fragment>
         ))}
+      </div>
+
+      <div className={styles.worldMap}>
+        <h2>Our awesome apps <br /> are loved worldwide</h2>
+        <p>We care about your users and we always pay huge attention to create <br /> a product that people <b>love</b> to use every day.</p>
+
+        <div className={styles.map}>
+          <Image style={{objectFit: 'contain'}} src="/map.png" fill sizes='100vw' priority={false} alt="World map" />
+        </div>
       </div>
 
     </main>
