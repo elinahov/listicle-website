@@ -1,8 +1,9 @@
+import React from 'react'
 import Image from 'next/image'
 import styles from './page.module.scss'
 import Header from '@/components/Header'
 import Button from '@/components/Button'
-import React from 'react'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   const headerActions = [
@@ -99,6 +100,7 @@ export default function Home() {
         </div>
       </div>
 
+      <Footer />
     </main>
   )
 }
