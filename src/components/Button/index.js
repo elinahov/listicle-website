@@ -1,8 +1,8 @@
 import styles from './styles.module.scss';
 
-function Button({ children }) {
+function Button({ children, className }) {
     return (
-        <div className={styles.button}>
+        <div className={`${styles.button} ${className}`}>
             <h4>{children}</h4>
         </div>
     )

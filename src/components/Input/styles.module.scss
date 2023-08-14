@@ -1,0 +1,26 @@
+@import '../../app/variables.module.scss';
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+
+    .label {
+        color: $secondary-color;
+        font-size: 16px;
+        margin-bottom: 6px;
+        align-self: flex-start;
+    }
+
+    .input {
+        border: 1px solid $secondary-color;
+        border-radius: 10px;
+        padding: 18px 16px;
+        color: $secondary-color;
+        font-size: 16px;
+    }
+
+    .input::placeholder {
+        color: $text-grey;
+    }
+}
