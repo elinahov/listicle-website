@@ -31,6 +31,7 @@
     color: $secondary-color;
     font-size: 16px;
     margin: 4px 16px;
+    cursor: pointer;
 }
 
 .cta {
@@ -44,12 +45,14 @@
     font-weight: 500;
     color: $accent-color;
     margin: 0 15px;
+    cursor: pointer;
 }
 
 .cta span {
     border: 1px solid $accent-color;
     border-radius: 50px;
     padding: 13px 20px;
+    cursor: pointer;
 }
 
 .signin {

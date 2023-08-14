@@ -40,7 +40,7 @@ export default function Home() {
   ]
 
   return (
-    <main className={styles.main}>
+    <div className={styles.main}>
       <Header actions={headerActions} />
 
       <div className={styles.banner}>
@@ -101,6 +101,6 @@ export default function Home() {
       </div>
 
       <Footer />
-    </main>
+    </div>
   )
 }

@@ -2,9 +2,11 @@
 import useIsMobile from '@/hooks/useIsMobile';
 import styles from './styles.module.scss'
 import Image from 'next/image';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ModalContext } from '@/app/providers';
 
 function Header({ actions }) {
+    const { setModalOpen } = useContext(ModalContext);
     const [showMenu, setShowMenu] = useState(false);
     const { isMobile } = useIsMobile();
 
@@ -35,8 +37,8 @@ function Header({ actions }) {
 
                     {/* CTA */}
                     <div className={styles.cta}>
-                        <h3>Sign in</h3>
-                        <span>
+                        <h3 onClick={() => setModalOpen('login')}>Sign in</h3>
+                        <span onClick={() => setModalOpen('signup')}>
                             <h3>Create an account</h3>
                         </span>
                     </div>
@@ -53,8 +55,8 @@ function Header({ actions }) {
 
                     {/* CTA */}
                     <div className={styles.cta}>
-                        <h3 className={styles.signin}>Sign in</h3>
-                        <span>
+                        <h3 className={styles.signin} onClick={() => setModalOpen('login')}>Sign in</h3>
+                        <span onClick={() => setModalOpen('signup')}>
                             <h3>Create an account</h3>
                         </span>
                     </div>
