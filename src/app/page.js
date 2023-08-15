@@ -6,21 +6,6 @@ import Button from '@/components/Button'
 import Footer from '@/components/Footer'
 
 export default function Home() {
-  const headerActions = [
-    {
-      title: 'About'
-    },
-    {
-      title: 'Features'
-    },
-    {
-      title: 'Pricing'
-    },
-    {
-      title: 'Testimonials'
-    },
-  ]
-
   const highlights = [
     {
       title: '500+',
@@ -41,7 +26,7 @@ export default function Home() {
 
   return (
     <div className={styles.main}>
-      <Header actions={headerActions} />
+      <Header />
 
       <div className={styles.banner}>
         <div className={styles.bannerText}>
@@ -70,7 +55,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={styles.highlights}>
+      <div className={styles.highlights} id="about">
         {highlights.map((highlight, index) => (
           <React.Fragment key={highlight.title}>
             <div className={styles.highlight}>

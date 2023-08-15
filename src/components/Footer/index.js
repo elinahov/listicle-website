@@ -1,7 +1,12 @@
+'use client'
+import Link from 'next/link';
 import Button from '../Button';
 import styles from './styles.module.scss'
+import { useContext } from 'react';
+import { ModalContext } from '@/app/providers';
 
 function Footer() {
+    const {setModalOpen} = useContext(ModalContext);
 
     return (
         <div className={styles.footer}>
@@ -12,7 +17,7 @@ function Footer() {
                         <p>Create an account with us and find the fun.</p>
                     </div>
 
-                    <Button>Create account</Button>
+                    <Button onClick={() => setModalOpen('signup')}>Create account</Button>
                 </div>
             </div>
 
@@ -26,16 +31,24 @@ function Footer() {
                     <div className={styles.footerLinks}>
                         <p className={styles.footerHeader}>Engage</p>
 
-                        <p className={styles.footerLink}>Sign in</p>
-                        <p className={styles.footerLink}>FAQ</p>
-                        <p className={styles.footerLink}>About Us</p>
+                        <p onClick={() => setModalOpen('login')} className={styles.footerLink}>Sign in</p>
+                        <Link href='/faq'>
+                            <p className={styles.footerLink}>FAQ</p>
+                        </Link>
+                        <Link href='/#about'>
+                            <p className={styles.footerLink}>About Us</p>
+                        </Link>
                     </div>
 
                     <div className={styles.footerLinks}>
                         <p className={styles.footerHeader}>Earn Money</p>
 
-                        <p className={styles.footerLink}>Affiliate</p>
-                        <p className={styles.footerLink}>Become Partner</p>
+                        <a href="https://google.com" target='_blank'>
+                            <p className={styles.footerLink}>Affiliate</p>
+                        </a>
+                        <a href="https://google.com" target='_blank'>
+                            <p className={styles.footerLink}>Become Partner</p>
+                        </a>
                     </div>
                 </div>
             </div>

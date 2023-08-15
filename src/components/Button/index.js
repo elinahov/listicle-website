@@ -1,8 +1,9 @@
+'use client'
 import styles from './styles.module.scss';
 
-function Button({ children, className }) {
+function Button({ children, className, onClick }) {
     return (
-        <div className={`${styles.button} ${className}`}>
+        <div onClick={onClick} className={`${styles.button} ${className}`}>
             <h4>{children}</h4>
         </div>
     )
