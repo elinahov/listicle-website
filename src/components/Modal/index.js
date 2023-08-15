@@ -10,6 +10,14 @@ import Checkbox from '../Checkbox';
 function Modal() {
     const {modalOpen, setModalOpen} = useContext(ModalContext);
     const [agreed, setAgreed] = useState(false);
+    const [formValues, setFormValues] = useState({});
+
+    const onInputChange = (key, e) => {
+        setFormValues(values => ({
+            ...values,
+            [key]: e.target.value
+        }))
+    }
     
     const modalContent = {
         login: {
@@ -17,8 +25,8 @@ function Modal() {
             content: (
                 <div>
                     <form className={styles.form}>
-                        <Input name="email" label="Email" />
-                        <Input name="password" label="Password" type="password" />
+                        <Input name="email" label="Email" onChange={onInputChange} value={formValues.email} />
+                        <Input name="password" label="Password" type="password" onChange={onInputChange} value={formValues.password} />
 
                         <Button className={styles.button}>Login</Button>
                     </form>
@@ -35,9 +43,9 @@ function Modal() {
             content: (
                 <div>
                     <form className={styles.form}>
-                        <Input name="name" label="Name" />
-                        <Input name="email" label="Email" />
-                        <Input name="password" label="Password" type="password" />
+                        <Input name="name" label="Name" onChange={onInputChange} value={formValues.name} />
+                        <Input name="email" label="Email" onChange={onInputChange} value={formValues.email} />
+                        <Input name="password" label="Password" type="password" onChange={onInputChange} value={formValues.password} />
 
                         <Checkbox checked={agreed} onCheck={setAgreed}>
                             <p className={styles.agreeText}>
@@ -58,7 +66,6 @@ function Modal() {
         }
     }
 
-    console.log('modalOpen :>> ', modalOpen);
     if (!modalOpen) {
         return null;
     }
