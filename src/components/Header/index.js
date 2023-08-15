@@ -7,11 +7,25 @@ import { ModalContext } from '@/app/providers';
 import Link from 'next/link';
 
 function Header() {
+    const isAuthenticated = true;
     const { setModalOpen } = useContext(ModalContext);
     const [showMenu, setShowMenu] = useState(false);
     const { isMobile } = useIsMobile();
 
-    const actions = [
+    const actions = isAuthenticated ? [
+        {
+            title: 'Home',
+            route: '/home'
+        },
+        {
+            title: 'Favorites',
+            route: '/favorites'
+        },
+        {
+            title: 'Settings',
+            route: '/settings'
+        },
+    ] : [
         {
             title: 'About',
             route: '/#about'
@@ -19,7 +33,7 @@ function Header() {
         {
             title: 'FAQ',
             route: '/faq'
-        },
+        }, 
     ]
 
 
@@ -53,12 +67,20 @@ function Header() {
                     </div>
 
                     {/* CTA */}
-                    <div className={styles.cta}>
-                        <h3 onClick={() => setModalOpen('login')}>Sign in</h3>
-                        <span onClick={() => setModalOpen('signup')}>
-                            <h3>Create an account</h3>
-                        </span>
-                    </div>
+                    {isAuthenticated ? (
+                        <div className={styles.cta}>
+                            <span>
+                                <h3>Add new listing</h3>
+                            </span>
+                        </div>
+                    ) : (
+                        <div className={styles.cta}>
+                            <h3 onClick={() => setModalOpen('login')}>Sign in</h3>
+                            <span onClick={() => setModalOpen('signup')}>
+                                <h3>Create an account</h3>
+                            </span>
+                        </div>
+                    )}
                 </>
             )}
             
@@ -73,12 +95,20 @@ function Header() {
                     </div>
 
                     {/* CTA */}
-                    <div className={styles.cta}>
-                        <h3 className={styles.signin} onClick={() => setModalOpen('login')}>Sign in</h3>
-                        <span onClick={() => setModalOpen('signup')}>
-                            <h3>Create an account</h3>
-                        </span>
-                    </div>
+                    {isAuthenticated ? (
+                        <div className={styles.cta}>
+                            <span>
+                                <h3>Add new listing</h3>
+                            </span>
+                        </div>
+                    ) : (
+                        <div className={styles.cta}>
+                            <h3 className={styles.signin} onClick={() => setModalOpen('login')}>Sign in</h3>
+                            <span onClick={() => setModalOpen('signup')}>
+                                <h3>Create an account</h3>
+                            </span>
+                        </div>
+                    )}
                 </div>
             )}
         </div>

@@ -1,28 +1,39 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import styles from './page.module.scss'
 import Header from '@/components/Header'
 import Button from '@/components/Button'
 import Footer from '@/components/Footer'
+import { useRouter } from 'next/navigation'
+
+const highlights = [
+  {
+    title: '500+',
+    subtitle: 'Listings',
+    icon: '/phone.png',
+  },
+  {
+    title: '100+',
+    subtitle: 'Users',
+    icon: '/user.png',
+  },
+  {
+    title: '30+',
+    subtitle: 'Servers',
+    icon: '/server.png',
+  },
+]
 
 export default function Home() {
-  const highlights = [
-    {
-      title: '500+',
-      subtitle: 'Listings',
-      icon: '/phone.png',
-    },
-    {
-      title: '100+',
-      subtitle: 'Users',
-      icon: '/user.png',
-    },
-    {
-      title: '30+',
-      subtitle: 'Servers',
-      icon: '/server.png',
-    },
-  ]
+  const isAuthenticated = true;
+  const router = useRouter()
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push('/home')
+    }
+  }, [])
 
   return (
     <div className={styles.main}>
