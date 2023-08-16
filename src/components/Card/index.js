@@ -1,25 +1,19 @@
 'use client'
-import { useEffect, useState } from 'react';
 import styles from './styles.module.scss'
+import Image from 'next/image';
 
-function Card({ title, subtitle = 'Default title', link = 'https://google.com' }) {
-    const [clickCount, setClickCount] = useState(0);
-
-    useEffect(() => {
-        console.log(`Hello I was clicked ${clickCount} times`)
-    }, [clickCount])
-
-    const handleClick = () => {
-        setClickCount((currentState) => currentState + 1)
-    }
+function Card({ title, subtitle = 'Default title', onClick, onActionClick, image, isFavorite, isDeletable }) {
+    const icon = isDeletable ? '/delete.png' : isFavorite ? '/heart_filled.png' : '/heart.png';
 
     return (
-        <div onClick={handleClick} className={styles.card}>
-            <h2>
-                {title} <span>-&gt;</span>
-            </h2>
+        <div onClick={onClick} className={styles.card}>
+            <Image className={styles.image} src={image} alt={title} width={200} height={200} />
+            <h2>{title}</h2>
             <p>{subtitle}</p>
-            <p>Clicked count: {clickCount}</p>
+
+            <span className={styles.action} onClick={onActionClick}>
+                <Image src={icon} width={20} height={20} alt="Card action" />
+            </span>
         </div>
     )
 }
