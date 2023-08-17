@@ -1,29 +1,38 @@
 'use client'
 import Header from "@/components/Header";
 import styles from './page.module.scss';
-import Footer from "@/components/Footer";
 import Tag from "@/components/Tag";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "@/components/Card";
 import { data } from "./data";
 
+const tags = [
+    {
+        label: 'Sofas',
+        key: 'sofas'
+    },
+    {
+        label: 'Chairs',
+        key: 'chairs'
+    },
+    {
+        label: 'Lamps',
+        key: 'lamps'
+    },
+]
+
 const Home = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
+    const [filteredListings, setFilteredListings] = useState([]);
 
-    const tags = [
-        {
-            label: 'Sofas',
-            key: 'sofas'
-        },
-        {
-            label: 'Chairs',
-            key: 'chairs'
-        },
-        {
-            label: 'Lamps',
-            key: 'lamps'
-        },
-    ]
+    useEffect(() => {
+        if (selectedCategory) {
+            const filtered = data.filter(item => item?.category === selectedCategory);
+            setFilteredListings(filtered);
+        } else {
+            setFilteredListings(data);
+        }
+    }, [selectedCategory])
 
     return (
         <div className={styles.homeContainer}>
@@ -44,11 +53,11 @@ const Home = () => {
             </div>
 
             <div className={styles.listings}>
-                {data.map(item => (
+                {filteredListings.map(item => (
                     <Card
                         key={item._id}
                         title={item.title}
-                        subtitle={item.price}
+                        subtitle={`$${item.price.toLocaleString('en-US') }`}
                         image={item.image}
                         onClick={() => console.log('card click')}
                         onActionClick={(e) => {
@@ -57,6 +66,10 @@ const Home = () => {
                         }}
                     />
                 ))}
+
+                {!filteredListings?.length && (
+                    <p className={styles.notFound}>No matches found.</p>
+                )}
             </div>
     
         </div>
