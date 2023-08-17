@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Input from '../Input';
 import Button from '../Button';
 import Checkbox from '../Checkbox';
+import { register } from '@/http/auth';
 
 function Modal() {
     const {modalOpen, setModalOpen} = useContext(ModalContext);
@@ -17,6 +18,15 @@ function Modal() {
             ...values,
             [key]: e.target.value
         }))
+    }
+
+    const handleSignup = async () => {
+        try {
+            const res = await register(formValues);
+            console.log('res :>> ', res);
+        } catch (e) {
+            console.log('e :>> ', e);
+        }
     }
     
     const modalContent = {
@@ -54,7 +64,7 @@ function Modal() {
                                 & <a href='https://google.com' target='_blank'> Privacy</a> </p>
                         </Checkbox>
 
-                        <Button className={styles.button}>Create account</Button>
+                        <Button className={styles.button} onClick={handleSignup}>Create account</Button>
                     </form>
 
                     <p className={styles.footerText}>

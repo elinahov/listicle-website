@@ -6,6 +6,7 @@ import Header from '@/components/Header'
 import Button from '@/components/Button'
 import Footer from '@/components/Footer'
 import { useRouter } from 'next/navigation'
+import { setupHttp } from '@/http'
 
 const highlights = [
   {
@@ -26,10 +27,12 @@ const highlights = [
 ]
 
 export default function Home() {
-  const isAuthenticated = true;
+  const isAuthenticated = false;
   const router = useRouter()
 
   useEffect(() => {
+    setupHttp();
+
     if (isAuthenticated) {
       router.push('/home')
     }

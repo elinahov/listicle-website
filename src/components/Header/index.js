@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 function Header() {
-    const isAuthenticated = true;
+    const isAuthenticated = false;
     const { setModalOpen } = useContext(ModalContext);
     const [showMenu, setShowMenu] = useState(false);
     const { isMobile } = useIsMobile();

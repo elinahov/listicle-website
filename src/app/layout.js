@@ -1,4 +1,4 @@
-import Modal from '@/components/Modal'
+import AuthModal from '@/components/AuthModal'
 import './globals.scss'
 import { Rubik } from 'next/font/google'
 import Providers from './providers'
@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={rubik.className}>
         <Providers>
-          <Modal />
+          <AuthModal />
 
           <main className='main'>
             {children}
