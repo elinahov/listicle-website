@@ -6,12 +6,14 @@ import Image from 'next/image';
 import Input from '../Input';
 import Button from '../Button';
 import Checkbox from '../Checkbox';
-import { register } from '@/http/auth';
+import { login, register } from '@/http/auth';
 
 function Modal() {
     const {modalOpen, setModalOpen} = useContext(ModalContext);
     const [agreed, setAgreed] = useState(false);
     const [formValues, setFormValues] = useState({});
+    const isLoginFormValid = !!formValues.email && !!formValues.password;
+    const isRegisterFormValid = !!formValues.name && !!formValues.email && !!formValues.password;
 
     const onInputChange = (key, e) => {
         setFormValues(values => ({
@@ -29,6 +31,21 @@ function Modal() {
         }
     }
     
+
+    const handleLogin = async () => {
+        try {
+            const res = await login(formValues);
+            console.log('res :>> ', res);
+        } catch (e) {
+            console.log('e :>> ', e);
+        }
+    }
+
+    const onCloseModal = () => {
+        setModalOpen(null);
+        setFormValues({})
+    }
+    
     const modalContent = {
         login: {
             title: 'Sign in',
@@ -38,7 +55,9 @@ function Modal() {
                         <Input name="email" label="Email" onChange={onInputChange} value={formValues.email} />
                         <Input name="password" label="Password" type="password" onChange={onInputChange} value={formValues.password} />
 
-                        <Button className={styles.button}>Login</Button>
+                        <Button className={styles.button} onClick={handleLogin} disabled={!isLoginFormValid}>
+                            Login
+                        </Button>
                     </form>
 
                     <p className={styles.footerText}>
@@ -64,7 +83,9 @@ function Modal() {
                                 & <a href='https://google.com' target='_blank'> Privacy</a> </p>
                         </Checkbox>
 
-                        <Button className={styles.button} onClick={handleSignup}>Create account</Button>
+                        <Button className={styles.button} onClick={handleSignup} disabled={!agreed || !isRegisterFormValid}>
+                            Create account
+                        </Button>
                     </form>
 
                     <p className={styles.footerText}>
@@ -84,7 +105,7 @@ function Modal() {
         <div className={styles.modal}>
             <div className={styles.content}>
                 <Image 
-                    onClick={() => setModalOpen(null)} 
+                    onClick={onCloseModal} 
                     className={styles.close} 
                     alt="Clsoe modal"
                     src={'/close.png'} 

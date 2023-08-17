@@ -6,10 +6,17 @@
     padding: 18px;
     width: 250px;
     margin: 20px 0;
+    cursor: pointer;
 
     h4 {
         color: $white;
         text-align: center;
         font-weight: 600;
     }
+}
+
+.disabled {
+    background-color: $disabled;
+    opacity: 0.7;
+    pointer-events: none;
 }

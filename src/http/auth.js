@@ -8,3 +8,10 @@ export const register = async ({ name, email, password }) => {
         confirmPassword: password
     });
 }
+
+export const login = async ({ email, password }) => {
+    return axios.post('/user/login', {
+        email: email,
+        password: password,
+    });
+}
