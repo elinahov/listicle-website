@@ -1,0 +1,17 @@
+@import '../../app/variables.module.scss';
+
+.listItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-radius: 4px;
+    margin: 5px 0;
+    box-shadow: 0px 0px 20px 0px rgba(138, 149, 158, 0.2);
+
+    h4 {
+        color: $text-blue;
+        font-weight: 500;
+    }
+}

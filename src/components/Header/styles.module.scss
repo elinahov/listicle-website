@@ -35,6 +35,11 @@
     cursor: pointer;
 }
 
+.activePage {
+    color: $accent-color;
+    font-weight: bold;
+}
+
 .cta {
     display: flex;
     flex-direction: row;

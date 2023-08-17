@@ -5,12 +5,14 @@ import Image from 'next/image';
 import { useContext, useState } from 'react';
 import { ModalContext } from '@/app/providers';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 function Header() {
     const isAuthenticated = true;
     const { setModalOpen } = useContext(ModalContext);
     const [showMenu, setShowMenu] = useState(false);
     const { isMobile } = useIsMobile();
+    const path = usePathname();
 
     const actions = isAuthenticated ? [
         {
@@ -61,7 +63,7 @@ function Header() {
                     <div className={styles.actionsContainer}>
                         {actions.map(action => (
                             <Link key={action.title} href={action.route}>
-                                <h3 className={styles.action}>{action.title}</h3>
+                                <h3 className={`${styles.action} ${path === action.route ? styles.activePage : ''}`}>{action.title}</h3>
                             </Link>
                         ))}
                     </div>
