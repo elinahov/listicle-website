@@ -6,17 +6,16 @@ import { useContext, useState } from 'react';
 import { ModalContext } from '@/app/providers';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { AUTH_TOKEN } from '@/http/auth';
+import { useUser } from '@/hooks/useUser';
 
 function Header() {
-    const authToken = localStorage.getItem(AUTH_TOKEN);
-    const isAuthenticated = !!authToken;
+    const { authenticated } = useUser();
     const { setModalOpen } = useContext(ModalContext);
     const [showMenu, setShowMenu] = useState(false);
     const { isMobile } = useIsMobile();
     const path = usePathname();
 
-    const actions = isAuthenticated ? [
+    const actions = authenticated ? [
         {
             title: 'Home',
             route: '/home'
@@ -71,7 +70,7 @@ function Header() {
                     </div>
 
                     {/* CTA */}
-                    {isAuthenticated ? (
+                    {authenticated ? (
                         <div className={styles.cta}>
                             <span>
                                 <h3>Add new listing</h3>
@@ -99,7 +98,7 @@ function Header() {
                     </div>
 
                     {/* CTA */}
-                    {isAuthenticated ? (
+                    {authenticated ? (
                         <div className={styles.cta}>
                             <span>
                                 <h3>Add new listing</h3>

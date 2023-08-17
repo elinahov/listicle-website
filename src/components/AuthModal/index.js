@@ -7,10 +7,12 @@ import Input from '../Input';
 import Button from '../Button';
 import Checkbox from '../Checkbox';
 import { AUTH_TOKEN, login, register } from '@/http/auth';
+import { useUser } from '@/hooks/useUser';
 
 function Modal() {
     const {modalOpen, setModalOpen} = useContext(ModalContext);
     const {setError} = useContext(ErrorContext);
+    const { authenticate } = useUser()
     const [agreed, setAgreed] = useState(false);
     const [formValues, setFormValues] = useState({});
     const isLoginFormValid = !!formValues.email && !!formValues.password;
@@ -26,21 +28,21 @@ function Modal() {
     const handleSignup = async () => {
         try {
             const res = await register(formValues);
-            console.log('res :>> ', res);
+            const token = res?.data?.token;
+            onCloseModal();
+            authenticate(token);
         } catch (e) {
             const err = e?.response?.data?.message || 'Something went wrong';
             setError(err);
         }
     }
     
-
     const handleLogin = async () => {
         try {
             const res = await login(formValues);
-            console.log('res :>> ', res);
             const token = res?.data?.token;
-
-            localStorage.setItem(AUTH_TOKEN, token);
+            onCloseModal();
+            authenticate(token);
         } catch (e) {
             const err = e?.response?.data?.message || 'Something went wrong';
             setError(err);
