@@ -7,6 +7,7 @@ import Button from '@/components/Button'
 import Footer from '@/components/Footer'
 import { useRouter } from 'next/navigation'
 import { setupHttp } from '@/http'
+import { AUTH_TOKEN } from '@/http/auth'
 
 const highlights = [
   {
@@ -27,11 +28,12 @@ const highlights = [
 ]
 
 export default function Home() {
-  const isAuthenticated = false;
+  const authToken = localStorage.getItem(AUTH_TOKEN);
+  const isAuthenticated = !!authToken;
   const router = useRouter()
 
   useEffect(() => {
-    setupHttp();
+    setupHttp(authToken);
 
     if (isAuthenticated) {
       router.push('/home')

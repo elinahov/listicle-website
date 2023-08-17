@@ -1,15 +1,16 @@
 'use client'
 import { useContext, useState } from 'react';
 import styles from './styles.module.scss';
-import { ModalContext } from '@/app/providers';
+import { ErrorContext, ModalContext } from '@/app/providers';
 import Image from 'next/image';
 import Input from '../Input';
 import Button from '../Button';
 import Checkbox from '../Checkbox';
-import { login, register } from '@/http/auth';
+import { AUTH_TOKEN, login, register } from '@/http/auth';
 
 function Modal() {
     const {modalOpen, setModalOpen} = useContext(ModalContext);
+    const {setError} = useContext(ErrorContext);
     const [agreed, setAgreed] = useState(false);
     const [formValues, setFormValues] = useState({});
     const isLoginFormValid = !!formValues.email && !!formValues.password;
@@ -27,7 +28,8 @@ function Modal() {
             const res = await register(formValues);
             console.log('res :>> ', res);
         } catch (e) {
-            console.log('e :>> ', e);
+            const err = e?.response?.data?.message || 'Something went wrong';
+            setError(err);
         }
     }
     
@@ -36,8 +38,12 @@ function Modal() {
         try {
             const res = await login(formValues);
             console.log('res :>> ', res);
+            const token = res?.data?.token;
+
+            localStorage.setItem(AUTH_TOKEN, token);
         } catch (e) {
-            console.log('e :>> ', e);
+            const err = e?.response?.data?.message || 'Something went wrong';
+            setError(err);
         }
     }
 

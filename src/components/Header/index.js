@@ -6,9 +6,11 @@ import { useContext, useState } from 'react';
 import { ModalContext } from '@/app/providers';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { AUTH_TOKEN } from '@/http/auth';
 
 function Header() {
-    const isAuthenticated = false;
+    const authToken = localStorage.getItem(AUTH_TOKEN);
+    const isAuthenticated = !!authToken;
     const { setModalOpen } = useContext(ModalContext);
     const [showMenu, setShowMenu] = useState(false);
     const { isMobile } = useIsMobile();

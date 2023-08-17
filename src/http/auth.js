@@ -1,4 +1,6 @@
-import axios from "axios"
+import axios from "axios";
+
+export const AUTH_TOKEN = 'auth_token';
 
 export const register = async ({ name, email, password }) => {
     return axios.post('/user/register', {

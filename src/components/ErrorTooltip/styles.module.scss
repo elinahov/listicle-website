@@ -1,0 +1,16 @@
+@import '../../app/variables.module.scss';
+
+.errorTooltip {
+    position: fixed;
+    z-index: 500;
+    top: 40px;
+    right: 40px;
+    background-color: $error-color;
+    padding: 20px;
+    border-radius: 10px;
+
+    h4 {
+        color: $white;
+        font-size: 16px;
+    }
+}
