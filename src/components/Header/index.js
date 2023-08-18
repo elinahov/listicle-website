@@ -71,11 +71,13 @@ function Header() {
 
                     {/* CTA */}
                     {authenticated ? (
-                        <div className={styles.cta}>
-                            <span>
-                                <h3>Add new listing</h3>
-                            </span>
-                        </div>
+                        <Link href={'/new-listing'}>
+                            <div className={styles.cta}>
+                                <span>
+                                    <h3>Add new listing</h3>
+                                </span>
+                            </div>
+                        </Link>
                     ) : (
                         <div className={styles.cta}>
                             <h3 onClick={() => setModalOpen('login')}>Sign in</h3>
@@ -99,11 +101,13 @@ function Header() {
 
                     {/* CTA */}
                     {authenticated ? (
-                        <div className={styles.cta}>
-                            <span>
-                                <h3>Add new listing</h3>
-                            </span>
-                        </div>
+                        <Link href={'/new-listing'}>
+                            <div className={styles.cta}>
+                                <span>
+                                    <h3>Add new listing</h3>
+                                </span>
+                            </div>
+                        </Link>
                     ) : (
                         <div className={styles.cta}>
                             <h3 className={styles.signin} onClick={() => setModalOpen('login')}>Sign in</h3>

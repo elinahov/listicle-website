@@ -1,0 +1,73 @@
+@import '../variables.module.scss';
+
+.newListingContainer {
+    padding: 0 2rem;
+    
+    .title {
+        margin-top: 30px;
+    }
+
+    .uploadWrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .label {
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .customUpload {
+        width: 250px;
+        height: 250px;
+        border: 1px dotted $secondary-color;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .plusContainer {
+            background-color: $border-color;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            h4 {
+                color: $white;
+                font-size: 50px;
+            }
+        }
+    }
+
+    .uploadInput {
+        font-size: 250px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+        opacity: 0;
+    }
+
+    .uploadedImageContainer {
+        width: 250px;
+        height: 250px;
+        position: relative;
+
+        .uploadedImage {
+            border: 1px solid $border-color;
+        }
+
+        .removeImage {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: $white;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    }
+}
