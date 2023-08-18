@@ -1,5 +1,6 @@
 'use client'
-import { createContext, useState } from "react";
+import { setupHttp } from "@/http";
+import { createContext, useEffect, useState } from "react";
 
 export const ModalContext = createContext()
 export const ErrorContext = createContext()
@@ -9,6 +10,10 @@ const Providers = ({children}) => {
     const [modalOpen, setModalOpen] = useState(null);
     const [error, setError] = useState(null);
     const [authenticated, setAuthenticated] = useState(null);
+
+    useEffect(() => {
+        setupHttp();
+    }, [authenticated])
 
     return (
         <ModalContext.Provider value={{ modalOpen, setModalOpen }}>

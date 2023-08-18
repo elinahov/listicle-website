@@ -32,12 +32,10 @@ export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
-    setupHttp();
-
     if (authenticated) {
       router.push('/home')
     }
-  }, [])
+  }, [authenticated])
 
   return (
     <div className={styles.main}>
