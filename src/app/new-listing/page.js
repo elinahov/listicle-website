@@ -8,6 +8,14 @@ import Button from "@/components/Button";
 
 const AddNewListing = () => {
     const [selectedImage, setSelectedImage] = useState()
+    const [formValues, setFormValues] = useState({})
+
+    const onInputChange = (key, e) => {
+        setFormValues(vals => ({
+            ...vals,
+            [key]: e.target.value,
+        }))
+    }
 
     const onImageSelect = (e) => {
         setSelectedImage(e.target.files[0])
@@ -40,8 +48,9 @@ const AddNewListing = () => {
                 </div>
 
                 <div className={styles.form}>
-                    <Input label="Title" />
-                    <Input label="Price" />
+                    <Input label="Title" placeholder="Listing Title" name="title" value={formValues.title} onChange={onInputChange} />
+                    <Input label="Price" placeholder="Enter price in USD" type="number" name="price" value={formValues.price} onChange={onInputChange} />
+                    <Input label="Description" isTextarea placeholder="Tell us more..." name="description" value={formValues.description} onChange={onInputChange} />
 
                     <Button className={styles.submitButton}>Submit</Button>
                 </div>
