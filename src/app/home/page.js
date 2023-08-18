@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Card from "@/components/Card";
 import { data } from "./data";
 import ProtectedRoute from "@/hoc/ProtectedRoute";
+import { useRouter } from "next/navigation";
 
 const tags = [
     {
@@ -23,6 +24,7 @@ const tags = [
 ]
 
 const Home = () => {
+    const router = useRouter();
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [filteredListings, setFilteredListings] = useState([]);
 
@@ -60,7 +62,10 @@ const Home = () => {
                         title={item.title}
                         subtitle={`$${item.price.toLocaleString('en-US') }`}
                         image={item.image}
-                        onClick={() => console.log('card click')}
+                        isFavorite={item?.liked}
+                        onClick={() => {
+                            router.push(`/services/${item?._id}`)
+                        }}
                         onActionClick={(e) => {
                             e.stopPropagation();
                             console.log('action click')

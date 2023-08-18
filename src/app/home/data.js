@@ -5,6 +5,7 @@ export const data = [
         "title": "Pink Lamp",
         "price": 1500,
         "category": "lamps",
+        "liked": true,
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam erat nisi, efficitur ut tincidunt non, consequat ut purus. ",
     },
     {
@@ -12,6 +13,7 @@ export const data = [
         "_id": "647dc9b89d6f1055fb5565d5",
         "title": "Cozy Orange sofa",
         "price": 2000,
+        "liked": false,
         "category": "sofas",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam erat nisi, efficitur ut tincidunt non, consequat ut purus. ",
     },
