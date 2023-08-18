@@ -5,6 +5,7 @@ import Tag from "@/components/Tag";
 import { useEffect, useState } from "react";
 import Card from "@/components/Card";
 import { data } from "./data";
+import ProtectedRoute from "@/hoc/ProtectedRoute";
 
 const tags = [
     {
@@ -76,4 +77,4 @@ const Home = () => {
     )
 }
 
-export default Home;
+export default ProtectedRoute(Home);

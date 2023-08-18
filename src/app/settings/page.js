@@ -4,6 +4,7 @@ import styles from './page.module.scss';
 import ListItem from "@/components/ListItem";
 import Button from "@/components/Button";
 import { useUser } from "@/hooks/useUser";
+import ProtectedRoute from "@/hoc/ProtectedRoute";
 
 const Settings = () => {
     const { logout } = useUser();
@@ -28,4 +29,4 @@ const Settings = () => {
     )
 }
 
-export default Settings;
+export default ProtectedRoute(Settings);
