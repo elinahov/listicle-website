@@ -5,6 +5,9 @@ import { useState } from "react";
 import Image from "next/image";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
+import { categories } from "@/data/categories";
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 const AddNewListing = () => {
     const [selectedImage, setSelectedImage] = useState()
@@ -17,9 +20,17 @@ const AddNewListing = () => {
         }))
     }
 
+    const onCategorySelect = (selectedCategory) => {
+        setFormValues(vals => ({
+            ...vals,
+            category: selectedCategory
+        }))
+    }
+
     const onImageSelect = (e) => {
         setSelectedImage(e.target.files[0])
     }
+
     return (
         <div className={styles.newListingContainer}>
             <Header />
@@ -49,6 +60,18 @@ const AddNewListing = () => {
 
                 <div className={styles.form}>
                     <Input label="Title" placeholder="Listing Title" name="title" value={formValues.title} onChange={onInputChange} />
+
+                    <p>Category</p>
+                    <Dropdown
+                        controlClassName={styles.dropdown} 
+                        arrowClassName={styles.dropdownArrow} 
+                        placeholderClassName={styles.dropdownPlaceholder}
+                        options={categories} 
+                        onChange={onCategorySelect} 
+                        value={formValues.category}
+                        placeholder="Select the category" 
+                    />
+
                     <Input label="Price" placeholder="Enter price in USD" type="number" name="price" value={formValues.price} onChange={onInputChange} />
                     <Input label="Description" isTextarea placeholder="Tell us more..." name="description" value={formValues.description} onChange={onInputChange} />
 
