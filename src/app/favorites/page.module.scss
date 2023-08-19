@@ -1,0 +1,25 @@
+.favoritesContainer {
+    padding: 0 2rem;
+    
+    .title {
+        margin: 40px 0;
+    }
+
+    .tagRow {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .listings {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .notFound {
+        margin-top: 40px;
+    }
+}

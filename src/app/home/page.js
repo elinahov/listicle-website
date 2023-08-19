@@ -10,21 +10,6 @@ import { BASE_URL } from "@/http";
 import { categories } from "@/data/categories";
 import { useServices } from "@/hooks/useServices";
 
-const tags = [
-    {
-        label: 'Sofas',
-        key: 'sofas'
-    },
-    {
-        label: 'Chairs',
-        key: 'chairs'
-    },
-    {
-        label: 'Lamps',
-        key: 'lamps'
-    },
-]
-
 const Home = () => {
     const router = useRouter();
     const { services, getServices, saveService } = useServices();
