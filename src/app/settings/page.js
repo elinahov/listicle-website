@@ -18,7 +18,7 @@ const Settings = () => {
             <p className={styles.subtitle}>Helpful Links</p>
     
             <div className={styles.actionsContainer}>
-                <ListItem title="My Listings" link="/home" />
+                <ListItem title="My Listings" link="/my-listings" />
                 <ListItem title="Contact Us" link="https://google.com" />
                 <ListItem title="Privacy Policy" link="https://google.com" />
                 <ListItem title="Terms and Conditions" link="https://google.com" />

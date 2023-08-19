@@ -7,7 +7,9 @@ function Card({ title, subtitle = 'Default title', onClick, onActionClick, image
 
     return (
         <div onClick={onClick} className={styles.card}>
-            <Image className={styles.image} src={image} alt={title} width={200} height={200} />
+            <div className={styles.imageContainer}>
+                <Image className={styles.image} src={image} alt={title} width={200} height={200} />
+            </div>
             <h2>{title}</h2>
             <p>{subtitle}</p>
 

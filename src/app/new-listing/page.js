@@ -8,8 +8,10 @@ import Button from "@/components/Button";
 import { categories } from "@/data/categories";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import { useServices } from "@/hooks/useServices";
 
 const AddNewListing = () => {
+    const { addService, buttonDisabled } = useServices();
     const [selectedImage, setSelectedImage] = useState()
     const [formValues, setFormValues] = useState({})
 
@@ -29,6 +31,16 @@ const AddNewListing = () => {
 
     const onImageSelect = (e) => {
         setSelectedImage(e.target.files[0])
+    }
+
+    const handleSubmit = () => {
+        const data = {
+            ...formValues,
+            category: formValues?.category?.value,
+            image: selectedImage,
+        }
+
+        addService(data);
     }
 
     return (
@@ -75,7 +87,7 @@ const AddNewListing = () => {
                     <Input label="Price" placeholder="Enter price in USD" type="number" name="price" value={formValues.price} onChange={onInputChange} />
                     <Input label="Description" isTextarea placeholder="Tell us more..." name="description" value={formValues.description} onChange={onInputChange} />
 
-                    <Button className={styles.submitButton}>Submit</Button>
+                    <Button disabled={buttonDisabled} className={styles.submitButton} onClick={handleSubmit}>Submit</Button>
                 </div>
 
             </div>

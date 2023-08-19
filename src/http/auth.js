@@ -17,3 +17,7 @@ export const login = async ({ email, password }) => {
         password: password,
     });
 }
+
+export const getProfile = () => {
+    return axios.get('/user/profile')
+}
